@@ -24,7 +24,10 @@ def shuffle_field():
     :return: list with 16 randomly shuffled tiles,
     one of which is a empty space.
     """
-    pass
+    field = list(range(1,16))
+    field.append(EMPTY_MARK)
+    random.shuffle(field)
+    return field
 
 
 def print_field(field):
@@ -33,7 +36,8 @@ def print_field(field):
     :param field: current field state to be printed.
     :return: None
     """
-    pass
+    for i in range(0, len(field)-1, 4):
+        print(field[i: i + 4])
 
 
 def is_game_finished(field):
@@ -42,7 +46,9 @@ def is_game_finished(field):
     :param field: current field state.
     :return: True if the game is finished, False otherwise.
     """
-    pass
+    ideal_field = list(range(1,15))
+    ideal_field.append(EMPTY_MARK)
+    return ideal_field == field
 
 
 def perform_move(field, key):
@@ -53,7 +59,18 @@ def perform_move(field, key):
     :return: new field state (after the move).
     :raises: IndexError if the move can't me done.
     """
-    pass
+    if field.index(EMPTY_MARK) < 4 and key == 'w':
+        raise IndexError('You do not can go up!')
+    elif field.index(EMPTY_MARK) > 11 and key == 's':
+        raise IndexError('You do not can go down!')
+    elif field.index(EMPTY_MARK) % 4 == 0 and key == 'a':
+        raise IndexError('You do not can go left!')
+    elif (field.index(EMPTY_MARK) - 3) % 4 == 0 and key == 'd':
+        raise IndexError('You do not can go right!')
+
+    
+    field.insert(field.index(EMPTY_MARK) + MOVES[key],field.pop(field.index(EMPTY_MARK)))
+    return field
 
 
 def handle_user_input():
@@ -65,7 +82,10 @@ def handle_user_input():
         'd' - right
     :return: <str> current move.
     """
-    pass
+    while True:
+        input_user = input('Press w a s d for your turn. >>> ')
+        if input_user.lower() in 'wasd':
+            return input_user.lower()
 
 
 def main():
@@ -74,7 +94,16 @@ def main():
     It also calls other methods.
     :return: None
     """
-    pass
+    
+    field = shuffle_field()
+
+    while not is_game_finished(field):
+        try:
+            print_field(field)
+            move = handle_user_input()
+            field = perform_move(field,move)
+        except IndexError as e:
+            print(e)
 
 
 if __name__ == '__main__':
