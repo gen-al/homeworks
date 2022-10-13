@@ -1,0 +1,3 @@
+Text string.
+tceh\homework_10\files\file.txt
+C:\Users\andre\Documents\Projects\homeworks\tceh\homework_10\files\file.txt

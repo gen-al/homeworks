@@ -1,3 +1,7 @@
+import requests
+import json
+import re
+
 # + Реализовать две функции: write_to_file(data) и read_file_data().
 # Которые соотвественно: пишут данные в файл и читают данные из файла.
 
@@ -16,9 +20,6 @@ def write_to_file(filename, content, mode = 'w'):
 # (сущность можно выбрать любую, например https://jsonplaceholder.typicode.com/comments),
 # выводить в консоль все пары заголовки, сохранять полученный json в файл на диск
 
-import requests
-import json
-import re
 
 def write_headres_request(site, filename):
     request_object = requests.get(site)
