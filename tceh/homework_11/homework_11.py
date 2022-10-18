@@ -1,6 +1,8 @@
 __author__ = 'Gen Andrey'
 
 from contextlib import contextmanager
+from msilib.schema import Error
+import time
 
 # +1. Дан класс:
 class Lock(object):
@@ -39,10 +41,17 @@ print(lock.lock)
 
 #     print('Done!') # => continues execution
 
+@contextmanager
 def no_exceptions():
+    try:
+        yield
+    except Exception as e:
+        print('logs: ' + str(e))
+    finally:
+        print('Done!')
 
-
-
+with no_exceptions():
+    1 / 0
 
 
 # +3. Сделать менеджер контекста, который бы мог измерять время выполнения блока кода, 
@@ -53,7 +62,16 @@ def no_exceptions():
 
 #     print('Execution time was:', t.time)
 
+class TimeIt(object):
+    def __init__(self):
+        self.start = None
+
+    def __enter__(self):
+        self.start = time.time()
+    
+    def __exit__(self, *args):
+        print(f'Execution time was: {time.time() - self.start}')
 
 
-
-
+with TimeIt():
+    time.sleep(2)
