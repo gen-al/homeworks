@@ -11,3 +11,6 @@ class ArticleForm(ModelForm):
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
+        include = [
+            'article_id'
+        ]

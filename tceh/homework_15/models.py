@@ -1,4 +1,4 @@
-from wtforms_alchemy import ModelForm
+# from wtforms_alchemy import ModelForm
 from app import db
 
 class Article(db.Model):

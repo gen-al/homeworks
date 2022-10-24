@@ -1,0 +1,7 @@
+Arcticle: {{title}}
+
+Content:
+    {{article}}
+
+Comments:
+    {{comment}}

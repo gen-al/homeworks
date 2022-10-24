@@ -15,7 +15,7 @@ app.config.update(
 
 class UserForm(FlaskForm):
     number = IntegerField(label='number', validators=[
-        validators.NumberRange(min=1, max=10)
+        validators.DataRequired()
     ])
 
 

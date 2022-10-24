@@ -1,0 +1,4 @@
+Arcticle: {{title}}
+
+Content:
+    {{article}}
