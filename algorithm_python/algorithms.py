@@ -298,6 +298,10 @@ def check_sorted(A:list, ascending=True):
 
 
 def left_bound(A:list, key):
+    """
+    Функция находит левую границу вхождения искомого элемента в отсортированном
+    массиве.
+    """
     left = -1
     right = len(A)
     while right - left > 1:
@@ -309,11 +313,19 @@ def left_bound(A:list, key):
     return left
 
 def right_bound(A:list, key):
+    """
+    Функция находит левую границу вхождения искомого элемента в отсортированном
+    массиве.
+    """
     left = -1
     right = len(A)
     while right - left > 1:
         middle = (right + left) // 2
-        if A[middle] 
+        if A[middle] <= key:
+            left = middle
+        else:
+            right = middle
+    return right
 
 
 
