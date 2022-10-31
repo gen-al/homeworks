@@ -3,8 +3,6 @@ __author__ = 'genal'
 # Алгоритмы курса "Алгоритмы и структуры данных в Python"
 # Часть 1
 
-from numpy import ModuleDeprecationWarning
-
 
 def turn_over(A:list):
     """
@@ -315,7 +313,7 @@ def right_bound(A:list, key):
     right = len(A)
     while right - left > 1:
         middle = (right + left) // 2
-        if A[middle]
+        if A[middle] 
 
 
 
